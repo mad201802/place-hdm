@@ -1,2 +1,3 @@
 https://www.npmjs.com/package/react-native-pinch-zoom-image
 
+https://www.npmjs.com/package/mdi-material-ui

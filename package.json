@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "react-native": "^0.68.0",
+    "react-native-fast-image": "^8.5.11"
+  }
+}
