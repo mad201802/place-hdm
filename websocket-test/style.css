@@ -1,0 +1,153 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+    font-size: 16px;
+    color: #ddd;
+    font: 400 16px/1.6 "Roboto", sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    max-height: 100vh;
+    background-color: #222;
+
+    display: grid;
+    grid-template-rows: 50px 50px auto;
+
+    gap: 10px;
+
+    padding: 7% 10% 5% 10%;
+
+    overflow: hidden;
+}
+
+button {
+    height: 40px;
+    outline: none;
+    padding: 0 10px;
+    border: none;
+    border-radius: 4px;
+
+    color: #1a1a1a;
+    font-weight: bold;
+    background-color: rgb(202, 202, 202);
+    transition: background-color 0.1s ease-in-out;
+}
+button:hover {
+    background-color: rgb(110, 167, 252);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+button:active {
+    background-color: rgb(169, 204, 255);
+}
+
+input {
+    background: none;
+    height: 40px;
+    border: none;
+    outline: none;
+    
+    padding: 5px 15px;
+    
+    flex-grow: 2;
+
+    font-size: 20px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.connection, .messaging {
+
+    padding: 5px;
+    
+    border-radius: 8px;
+    background-color: #444;
+    /* width: 50%; */
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#messages {
+    
+    max-height: 70vh;
+    border-radius: 8px;
+    border: 2px solid #444;
+    /* width: 50%; */
+    padding: 10px 15px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 5px;
+
+    overflow-y: auto;
+}
+#messages .message {
+    list-style: none;
+    padding: 5px;
+    border-radius: 8px;
+    background-color: #1a1a1a;
+    /* width: 50%; */
+}
+#messages .message span {
+    color: #666;
+    margin-right: 10px;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+    border-radius: 4px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    border-radius: 4px;
+    background: #1a1a1a;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background: #666;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
+#notify {
+    font-size: 18px;
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    background-color: #444;
+
+    border-radius: 8px;
+    border: 0px solid #444;
+    border-bottom: 3px solid #6bf;
+    padding: 15px 30px;
+
+    box-shadow: 0 8px 15px rgba(0,0,0,0.5);
+
+    transform: translateY(calc(-100%)) translateX(-50%);
+    opacity: 0;
+
+    transition: 300ms ease;
+    transition-delay: 300ms;
+}
+
+#notify.show {
+    transform: translateY(0) translateX(-50%);
+    opacity: 1;
+}
+
+#notify.error {
+    border-color: #f64;
+}
+#notify.success {
+    border-color: #6f8;
+}
