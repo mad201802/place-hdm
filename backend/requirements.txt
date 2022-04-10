@@ -2,3 +2,5 @@ fastapi
 bitstring
 uvicorn
 Pillow
+numpy
+websockets

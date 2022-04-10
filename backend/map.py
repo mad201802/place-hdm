@@ -48,7 +48,7 @@ COLOR_MAP = {
 
 # MAP BYTE: 11 Bit Map Size, 4 Bit for color, x and y is equal to the offset in relation to mapsize
 class PlaceBitMap():
-    def __init__(self, name: str, p_map_size: int=1000, n_map_bits: int = 11, n_color_bits: int=4):
+    def __init__(self, name: str, p_map_size: int=1000, n_map_bits: int = 16, n_color_bits: int=4):
         if p_map_size > 2**n_map_bits:
             raise ValueError("Map size is too big")
         self.name = name
@@ -61,6 +61,9 @@ class PlaceBitMap():
         if os.path.isfile(self.name + FILE_ENDING):
             return self.load_map()
         return self.create_map()
+
+    def get_map_bytes(self):
+        return self.map_bits.bytes
 
     def load_map(self):
         return pickle.load(open(self.name + FILE_ENDING, "rb"))
@@ -102,12 +105,11 @@ class PlaceBitMap():
         else:
             pickle.dump(self.map_bits, open(self.name + FILE_ENDING, "wb"))
 
-map = PlaceBitMap(name="test", p_map_size=2**12-1, n_map_bits=12, n_color_bits=4)
-start_time = timeit.default_timer()
-for i in range(0, map.p_map_size):
-    for j in range(0, map.p_map_size):
-        map.set_pixel(i, j, Colors.RED)
-print(timeit.default_timer() - start_time)
-map.save_map()
-map.save_map_as_image()
-print(map.get_map_size())
+
+if __name__ == '__main__':
+    map = PlaceBitMap(name="test", p_map_size=2048)
+    for i in range(0, map.p_map_size):
+        for j in range(0, map.p_map_size):
+            map.set_pixel(i, j, Colors.RED)
+    map.save_map()
+    print(map.get_map_size())
